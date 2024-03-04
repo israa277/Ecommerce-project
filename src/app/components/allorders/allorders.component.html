@@ -1,0 +1,29 @@
+<section class="my-4 py-4">
+  <div class="container my-5 py-5 p-5 bg-main-light rounded-3">
+    <h3 class="fw-bold">Order ID : {{ order[0].id }}</h3>
+    <p class="fw-bold">
+      Totel Price :
+      <span class="text-main">{{ order[0].totalOrderPrice }} EGP</span>
+    </p>
+
+    <div
+      class="row border-bottom py-3 align-items-center fw-bold"
+      *ngFor="let item of order[0].cartItems"
+    >
+      <div class="col-md-1 mb-2">
+        <img [src]="item.product.imageCover" class="w-100" alt="" />
+      </div>
+      <div class="col-md-11">
+        <div class="d-flex justify-content-between flex-row align-items-center">
+          <div>
+            <h5 class="h5">{{ item.product.title }}</h5>
+          </div>
+          <div>
+            <p class="text-main m-0">Price : {{ item.price }} EGP</p>
+            <span class="text-center"> Qty : {{ item.count }} </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

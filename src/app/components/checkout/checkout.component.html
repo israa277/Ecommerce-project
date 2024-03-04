@@ -1,0 +1,81 @@
+<section class="my-5 py-5">
+  <div class="container w-75 mx-auto bg-main-light rounded-3 p-4 my-3 shadow">
+    <form [formGroup]="checkout" (ngSubmit)="handelForm()">
+      <div class="mb-3">
+        <label for="details">Details</label>
+        <input
+          formControlName="details"
+          #inputDetails
+          type="text"
+          id="details"
+          class="form-control"
+        />
+      </div>
+      <div
+        class="alert alert-danger"
+        *ngIf="
+          checkout.get('details')?.errors &&
+          (checkout.get('details')?.touched || inputDetails.value.length > 0)
+        "
+      >
+        <p *ngIf="checkout.get('details')?.getError('required')">
+          Name is Required
+        </p>
+        <p *ngIf="checkout.get('details')?.getError('minlength')">
+          Name MinLength 3
+        </p>
+      </div>
+      <div class="mb-3">
+        <label for="phone">phone</label>
+        <input
+          formControlName="phone"
+          #inputphone
+          type="tel"
+          id="phone"
+          class="form-control"
+        />
+      </div>
+      <div
+        class="alert alert-danger"
+        *ngIf="
+          checkout.get('phone')?.errors &&
+          (checkout.get('phone')?.touched || inputphone.value.length > 0)
+        "
+      >
+        <p *ngIf="checkout.get('phone')?.getError('required')">
+          phone is Required
+        </p>
+        <p *ngIf="checkout.get('phone')?.getError('pattern')">
+          accept only egypt phone number
+        </p>
+      </div>
+      <div class="mb-3">
+        <label for="city">city</label>
+        <input
+          formControlName="city"
+          #inputcity
+          type="text"
+          id="city"
+          class="form-control"
+        />
+      </div>
+      <div
+        class="alert alert-danger"
+        *ngIf="
+          checkout.get('city')?.errors &&
+          (checkout.get('city')?.touched || inputcity.value.length > 0)
+        "
+      >
+        <p *ngIf="checkout.get('city')?.getError('required')">
+          city is Required
+        </p>
+      </div>
+      <button
+        [disabled]="checkout.invalid"
+        class="btn-outline-info btn w-100 d-block ms-auto"
+      >
+        Pay Now
+      </button>
+    </form>
+  </div>
+</section>

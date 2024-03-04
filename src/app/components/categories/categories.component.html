@@ -1,0 +1,17 @@
+<section class="my-5 py-5">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4" *ngFor="let item of categery">
+        <div class="product border rounded-3">
+          <img
+            class="w-100"
+            [src]="item.image"
+            [alt]="item.name"
+            height="300px"
+          />
+          <p class="h3 text-center text-main">{{ item.name }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

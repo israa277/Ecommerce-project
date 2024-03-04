@@ -1,0 +1,63 @@
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="row justify-content-center align-items-center">
+            <div class="col-md-6">
+              <h1 class="text-main">{{ SpecificBrand.name }}</h1>
+              <p>{{ SpecificBrand.slug }}</p>
+            </div>
+            <div class="col-md-6">
+              <img class="w-100" [src]="SpecificBrand.image" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="my-5 py-5">
+  <div class="container">
+    <h1 class="text-main mb-3 text-center">All Brands</h1>
+    <div class="row g-4">
+      <div class="col-md-3" *ngFor="let item of Brands">
+        <div
+          (click)="click($event)"
+          class="product border rounded-3"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          <img
+            [attr.data-id]="item._id"
+            class="w-100"
+            [src]="item.image"
+            [alt]="item.name"
+          />
+          <p [attr.data-id]="item._id" class="text-center">{{ item.name }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
